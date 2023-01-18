@@ -1,24 +1,37 @@
 ﻿using System.Resources;
 using System.Globalization;
+using labyrinthEditor.Functions;
 
 namespace labyrinthEditor;
 class Program
 {
+    [STAThread]
     static void Main(string[] args)
     {
-        DisplayMenu();
-        Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("hu-HU"); //i18n testing
-        DisplayMenu();
-        Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en-US"); //i18n testing
-        DisplayMenu();
+        bool displayMenu = true;
+        while (displayMenu)
+        {
+            Menu.DisplayMenu();
+            displayMenu = false;
+            switch (Console.ReadKey().KeyChar) {
+                case '1':
+                    Console.WriteLine("1");
+                    break;
+                case '2':
+                    Console.WriteLine("2");
+                    break;
+                case '3':
+                    Console.WriteLine("3");
+                    break;
+                case '4':
+                    Console.WriteLine("4");
+                    break;
+                case '5':
+                    Environment.Exit(0);
+                    break;
+            }
+            Console.ReadKey();
+        }
     }
 
-    static void DisplayMenu() {
-        Console.WriteLine(Resources.strings.MenuTitle);
-        Console.WriteLine("1. " + Resources.strings.MenuTitle);
-        Console.WriteLine("2. " + Resources.strings.MenuItemCreateMap);
-        Console.WriteLine("3. " + Resources.strings.MenuItemLoadMap);
-        Console.WriteLine("4. " + Resources.strings.ChangeLanguage);
-        Console.WriteLine("5. " + Resources.strings.ExitMenu);
-    }
 }
