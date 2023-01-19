@@ -1,6 +1,7 @@
 ﻿using System.Resources;
 using System.Globalization;
 using labyrinthEditor.Functions;
+using System.Text;
 
 namespace labyrinthEditor;
 class Program
@@ -9,6 +10,7 @@ class Program
     static void Main(string[] args)
     {
         Map map = new Map();
+        Console.OutputEncoding = Encoding.UTF8;
         bool displayMenu = true;
         while (displayMenu)
         {
