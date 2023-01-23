@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace labyrinthEditor
 {
-    internal class Map
+    public class Map
     {
         private List<List<Object>> map = new List<List<Object>>();
 
@@ -25,6 +25,16 @@ namespace labyrinthEditor
             for (int i = 0; i < map.Count(); i++) {
                 Console.WriteLine(String.Join("", map[i]));
             }
+        }
+
+        public int GetLength()
+        {
+            return map[0].Count();
+        }
+
+        public int GetHeight()
+        {
+            return map.Count();
         }
     }
 }

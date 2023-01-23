@@ -16,13 +16,15 @@ class Program
         {
             Menu.DisplayMenu();
             displayMenu = false;
-            switch (Console.ReadKey().KeyChar) {
+            switch (Console.ReadKey(true).KeyChar) {
                 case '1':
                     Console.WriteLine("1");
                     break;
                 case '2':
+                    Console.WriteLine();
                     map.LoadMap("minta.txt");
                     map.PrintMap();
+                    CursorMovement.EnableCursorMovement(map);
                     break;
                 case '3':
                     Console.WriteLine("3");
