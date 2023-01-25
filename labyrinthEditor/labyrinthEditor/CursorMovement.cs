@@ -10,12 +10,12 @@ public class CursorMovement
         y = 0;
     }
 
-    public int getXCoord()
+    public int GetXCoord()
     {
         return x;
     }
 
-    public int getYCoord()
+    public int GetYCoord()
     {
         return y;
     }
