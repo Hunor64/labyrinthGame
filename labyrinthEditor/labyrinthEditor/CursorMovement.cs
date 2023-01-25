@@ -4,6 +4,7 @@ public class CursorMovement
 {
     private int x;
     private int y;
+    private bool displayCursorLocation;
     public CursorMovement()
     {
         x = 0;
@@ -19,6 +20,22 @@ public class CursorMovement
     {
         return y;
     }
+
+    public void DisplayCursorLocation()
+    {
+        int prevX = GetXCoord();
+        int prevY = GetYCoord();
+        Console.BackgroundColor = ConsoleColor.Black;
+        Console.SetCursorPosition(0, Console.LargestWindowHeight);
+        for (int i = 0; i < Console.LargestWindowWidth; i++)
+        {
+            Console.Write(" ");
+        }
+        Console.SetCursorPosition(0, Console.LargestWindowHeight);
+        Console.BackgroundColor = ConsoleColor.Red;
+        Console.Write($"{Resources.strings.Height}: {prevY}, {Resources.strings.Width}: {prevX}");
+        Console.SetCursorPosition(prevX, prevY);
+    }
     
     public void EnableCursorMovement(Map map)
     {
@@ -27,6 +44,7 @@ public class CursorMovement
         while (enabled)
         {
             ConsoleKey key = Console.ReadKey(true).Key;
+            DisplayCursorLocation();
             switch (key)
             {
                 case ConsoleKey.W:

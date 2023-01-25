@@ -27,4 +27,16 @@
 	<data name="ExitMenu" xml:space="preserve">
 		<value>Kilépés a pályaszerkesztőből</value>
     </data>
+	<data name="AskHeight" xml:space="preserve">
+		<value>Adja meg a térkép magasságát</value>
+	</data>
+	<data name="AskWidth" xml:space="preserve">
+		<value>Adja meg a térkép szélességét</value>
+	</data>
+	<data name="Height" xml:space="preserve">
+		<value>Magasság</value>
+	</data>
+	<data name="Width" xml:space="preserve">
+		<value>Szélesség</value>
+	</data>
 </root>

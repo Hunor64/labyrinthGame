@@ -27,5 +27,17 @@
 	<data name="ExitMenu" xml:space="preserve">
 		<value>Exit from the map editor</value>
     </data>
+	<data name="AskHeight" xml:space="preserve">
+		<value>Length of the map</value>
+	</data>
+	<data name="AskWidth" xml:space="preserve">
+		<value>Width of the map</value>
+	</data>
+	<data name="Height" xml:space="preserve">
+		<value>Height</value>
+	</data>
+	<data name="Width" xml:space="preserve">
+		<value>Width</value>
+	</data>
 </root>
 

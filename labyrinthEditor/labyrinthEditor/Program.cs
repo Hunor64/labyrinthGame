@@ -19,9 +19,9 @@ class Program
             displayMenu = false;
             switch (Console.ReadKey(true).KeyChar) {
                 case '1':
-                    Console.Write("Adja meg a térkép szélességét");
+                    Console.Write("\n" + Resources.strings.AskWidth + ": ");
                     int x = Int32.Parse(Console.ReadLine());
-                    Console.Write("\nAdja meg a térkép magasságát");
+                    Console.Write("\n" + Resources.strings.AskHeight + ": ");
                     int y = Int32.Parse(Console.ReadLine());
                     map.CreateMap(y, x);
                     map.PrintMap();
