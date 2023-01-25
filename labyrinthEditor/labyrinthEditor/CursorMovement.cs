@@ -2,10 +2,26 @@ namespace labyrinthEditor;
 
 public class CursorMovement
 {
-    public static void EnableCursorMovement(Map map)
+    private int x;
+    private int y;
+    public CursorMovement()
     {
-        int x = 0;
-        int y = 0;
+        x = 0;
+        y = 0;
+    }
+
+    public int getXCoord()
+    {
+        return x;
+    }
+
+    public int getYCoord()
+    {
+        return y;
+    }
+    
+    public void EnableCursorMovement(Map map)
+    {
         bool enabled = true;
         Console.SetCursorPosition(0, 0);
         while (enabled)
@@ -34,7 +50,7 @@ public class CursorMovement
 
                     break;
                 case ConsoleKey.D:
-                    if (x < map.GetLength()-1)
+                    if (x < map.GetLength() -1)
                     {
                         x++;
                     }

@@ -8,18 +8,32 @@ namespace labyrinthEditor
 {
     public class Map
     {
-        private List<List<Object>> map = new List<List<Object>>();
+        private List<List<char>> map = new List<List<char>>();
 
         public void LoadMap(string filePath) {
             string[] lines = System.IO.File.ReadAllLines(filePath);
             foreach (string line in lines) {
-                List<Object> child = new List<Object>();
+                List<char> child = new List<char>();
                 foreach (char c in line) {
                     child.Add(c);
                 }
                 map.Add(child);
             }
         }
+        public void CreateMap(int height, int width)
+        {
+            List<char> rows = new List<char>();
+            for (int i = 0; i < width; i++)
+            {
+                rows.Add('.');
+            }
+
+            for (int i = 0; i < height; i++)
+            {
+                map.Add(rows);
+            }
+        }
+        
         public void PrintMap() {
             Console.Clear();
             for (int i = 0; i < map.Count(); i++) {
