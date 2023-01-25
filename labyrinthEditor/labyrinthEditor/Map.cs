@@ -11,7 +11,7 @@ namespace labyrinthEditor
         private List<List<char>> map = new List<List<char>>();
 
         public void LoadMap(string filePath) {
-            string[] lines = System.IO.File.ReadAllLines(filePath);
+            string[] lines = File.ReadAllLines(filePath);
             foreach (string line in lines) {
                 List<char> child = new List<char>();
                 foreach (char c in line) {
