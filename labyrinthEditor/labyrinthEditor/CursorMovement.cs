@@ -26,14 +26,14 @@ public class CursorMovement
         int prevX = GetXCoord();
         int prevY = GetYCoord();
         Console.BackgroundColor = ConsoleColor.Black;
-        Console.SetCursorPosition(0, Console.LargestWindowHeight);
+        Console.SetCursorPosition(0, Console.LargestWindowHeight - 2);
         for (int i = 0; i < Console.LargestWindowWidth; i++)
         {
             Console.Write(" ");
         }
-        Console.SetCursorPosition(0, Console.LargestWindowHeight);
+        Console.SetCursorPosition(0, Console.LargestWindowHeight - 2);
         Console.BackgroundColor = ConsoleColor.Red;
-        Console.Write($"{Resources.strings.Height}: {prevY}, {Resources.strings.Width}: {prevX}");
+        Console.Write($"{Resources.strings.Height}: {prevY}, {Resources.strings.Width}: {prevX}, UP: W, LEFT: A, DOWN: S, RIGHT:D");
         Console.SetCursorPosition(prevX, prevY);
     }
     

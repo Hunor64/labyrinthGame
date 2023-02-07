@@ -13,7 +13,7 @@ class Program
         CursorMovement cursorMovement = new CursorMovement();
         Console.OutputEncoding = Encoding.UTF8;
         
-        MainMenu()
+        Menu.MainMenu(map, cursorMovement);
     }
 
 }

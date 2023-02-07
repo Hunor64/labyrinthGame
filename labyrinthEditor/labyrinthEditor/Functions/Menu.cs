@@ -36,13 +36,27 @@ namespace labyrinthEditor.Functions
                         cursorMovement.EnableCursorMovement(map);
                         break;
                     case '2':
-                        Console.WriteLine();
-                        map.LoadMap("minta.txt");
-                        map.PrintMap();
-                        cursorMovement.EnableCursorMovement(map);
+                        Console.WriteLine("Enter the absolute path of a map file");
+                        string path = Console.ReadLine();
+                        try {
+                            File.Exists(path);
+                            map.LoadMap(path);
+                            map.PrintMap();
+                            cursorMovement.EnableCursorMovement(map);
+                        } catch {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Error: Path doesn't exist");
+                            Console.WriteLine("Press ENTER to continue");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            if (Console.ReadKey().Key == ConsoleKey.Enter) {
+                                MainMenu(map, cursorMovement);
+                            }
+                        }
+                        
                         break;
                     case '3':
-                        
+                        ChangeLanguage(map, cursorMovement);
                         break;
                     case '4':
                         Environment.Exit(0);
@@ -55,23 +69,30 @@ namespace labyrinthEditor.Functions
             }
         }
 
-        public static void ChangeLanguage() {
+        public static void ChangeLanguage(Map map, CursorMovement cursorMovement) {
             Console.Clear();
             Console.WriteLine("1. Hungarian/Magyar");
             Console.WriteLine("2. English");
-            Console.WriteLine("3. return to the menu")
+            Console.WriteLine("3. Return to the menu");
+            //TODO: Define the strings in the resource file
             ConsoleKeyInfo input =  Console.ReadKey(true);
 
             switch (input.Key)
             {
                 case ConsoleKey.D1:
                     Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hu-HU");
+                    Menu.MainMenu(map, cursorMovement);    
+                    break;
                 case ConsoleKey.D2:
                     Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
+                    Menu.MainMenu(map, cursorMovement);
+                    break;
                 case ConsoleKey.D3:
-                    
+                    Menu.MainMenu(map, cursorMovement);
+                    break;
                 default:
-                    ChangeLanguage();
+                    ChangeLanguage(map, cursorMovement);
+                    break;
             }   
         }
     }
