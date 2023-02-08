@@ -44,6 +44,8 @@
     </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Resources\strings.Designer.cs">
       <DependentUpon>strings.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Resources\strings.hu.Designer.cs">
       <DependentUpon>strings.hu.resx</DependentUpon>

@@ -36,7 +36,7 @@ namespace labyrinthEditor.Functions
                         cursorMovement.EnableCursorMovement(map);
                         break;
                     case '2':
-                        Console.WriteLine("Enter the absolute path of a map file");
+                        Console.WriteLine(Resources.strings.EnterAbsolutePath);
                         string path = Console.ReadLine();
                         try {
                             File.Exists(path);
@@ -46,8 +46,8 @@ namespace labyrinthEditor.Functions
                         } catch {
                             Console.Clear();
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("Error: Path doesn't exist");
-                            Console.WriteLine("Press ENTER to continue");
+                            Console.WriteLine(Resources.strings.Error_PathDoesntExist);
+                            Console.WriteLine(Resources.strings.PressEnterToContinue);
                             Console.ForegroundColor = ConsoleColor.White;
                             if (Console.ReadKey().Key == ConsoleKey.Enter) {
                                 MainMenu(map, cursorMovement);
@@ -73,8 +73,7 @@ namespace labyrinthEditor.Functions
             Console.Clear();
             Console.WriteLine("1. Hungarian/Magyar");
             Console.WriteLine("2. English");
-            Console.WriteLine("3. Return to the menu");
-            //TODO: Define the strings in the resource file
+            Console.WriteLine($"3. {Resources.strings.ReturnToMenu}");
             ConsoleKeyInfo input =  Console.ReadKey(true);
 
             switch (input.Key)
