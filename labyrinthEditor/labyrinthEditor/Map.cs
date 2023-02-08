@@ -8,47 +8,45 @@ namespace labyrinthEditor
 {
     public class Map
     {
-        private List<List<char>> map = new List<List<char>>();
+        public char[,] map;
 
         public void LoadMap(string filePath) {
             string[] lines = File.ReadAllLines(filePath);
-            foreach (string line in lines) {
-                List<char> child = new List<char>();
-                foreach (char c in line) {
-                    child.Add(c);
+            map = new char[lines.Count(), lines[0].Count()];
+            for (int i = 0; i < lines.Count(); i++) {
+                for (int k = 0; k < lines.Count(); k++) {
+                    map[i, k] = lines[i][k];
                 }
-                map.Add(child);
             }
         }
         public void CreateMap(int height, int width)
         {
-            List<char> rows = new List<char>();
-            for (int i = 0; i < width; i++)
-            {
-                rows.Add('.');
-            }
-
-            for (int i = 0; i < height; i++)
-            {
-                map.Add(rows);
+            map = new char[height, width];
+            for (int i = 0; i < height; i++) {
+                for (int k = 0; k < width; k++) {
+                    map[i, k] = '.';
+                }
             }
         }
         
         public void PrintMap() {
             Console.Clear();
-            for (int i = 0; i < map.Count(); i++) {
-                Console.WriteLine(String.Join("", map[i]));
+            for (int i = 0; i < map.GetLength(0); i++) {
+                for (int k = 0; k < map.GetLength(1); k++) {
+                    Console.Write(map[i, k]);
+                }
+                Console.WriteLine();
             }
         }
 
         public int GetLength()
         {
-            return map[0].Count();
+            return map.GetLength(1);
         }
 
         public int GetHeight()
         {
-            return map.Count();
+            return map.GetLength(0);
         }
     }
 }
