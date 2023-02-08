@@ -2,6 +2,7 @@ namespace labyrinthEditor;
 
 public class CursorMovement
 {
+    MapElements mapelements = new MapElements();
     private int x;
     private int y;
     private bool displayCursorLocation;
@@ -35,6 +36,7 @@ public class CursorMovement
         Console.BackgroundColor = ConsoleColor.Red;
         Console.Write($"{Resources.strings.Height}: {prevY}, {Resources.strings.Width}: {prevX}, UP: W, LEFT: A, DOWN: S, RIGHT:D");
         Console.SetCursorPosition(prevX, prevY);
+        Console.BackgroundColor = ConsoleColor.Black;
     }
     
     public void EnableCursorMovement(Map map)
@@ -75,6 +77,50 @@ public class CursorMovement
                     break;
                 case ConsoleKey.Escape:
                     enabled = false;
+                    break;
+                case ConsoleKey.D1:
+                    map.map[y, x] = mapelements.getElement(0);
+                    map.PrintMap();
+                    break;
+                case ConsoleKey.D2:
+                    map.map[y, x] = mapelements.getElement(1);
+                    map.PrintMap();
+                    break;
+                case ConsoleKey.D3:
+                    map.map[y, x] = mapelements.getElement(2);
+                    map.PrintMap();
+                    break;
+                case ConsoleKey.D4:
+                    map.map[y, x] = mapelements.getElement(3);
+                    map.PrintMap();
+                    break;
+                case ConsoleKey.D5:
+                    map.map[y, x] = mapelements.getElement(4);
+                    map.PrintMap();
+                    break;
+                case ConsoleKey.D6:
+                    map.map[y, x] = mapelements.getElement(5);
+                    map.PrintMap();
+                    break;
+                case ConsoleKey.D7:
+                    map.map[y, x] = mapelements.getElement(6);
+                    map.PrintMap();
+                    break;
+                case ConsoleKey.D8:
+                    map.map[y, x] = mapelements.getElement(7);
+                    map.PrintMap();
+                    break;
+                case ConsoleKey.D9:
+                    map.map[y, x] = mapelements.getElement(8);
+                    map.PrintMap();
+                    break;
+                case ConsoleKey.U:
+                    map.map[y, x] = mapelements.getElement(9);
+                    map.PrintMap();
+                    break;
+                case ConsoleKey.I:
+                    map.map[y, x] = mapelements.getElement(10);
+                    map.PrintMap();
                     break;
                 default:
                     continue;
