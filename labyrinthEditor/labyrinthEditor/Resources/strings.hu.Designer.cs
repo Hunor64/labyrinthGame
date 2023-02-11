@@ -98,5 +98,53 @@ namespace labyrinthEditor.Resources {
                 return ResourceManager.GetString("Width", resourceCulture);
             }
         }
+        
+        public static string ReturnToTheMenu {
+            get {
+                return ResourceManager.GetString("ReturnToTheMenu", resourceCulture);
+            }
+        }
+        
+        public static string EnterAbsolutePath {
+            get {
+                return ResourceManager.GetString("EnterAbsolutePath", resourceCulture);
+            }
+        }
+        
+        public static string Error_PathDoesntExist {
+            get {
+                return ResourceManager.GetString("Error_PathDoesntExist", resourceCulture);
+            }
+        }
+        
+        public static string PressEnterToContinue {
+            get {
+                return ResourceManager.GetString("PressEnterToContinue", resourceCulture);
+            }
+        }
+        
+        public static string Up {
+            get {
+                return ResourceManager.GetString("Up", resourceCulture);
+            }
+        }
+        
+        public static string Left {
+            get {
+                return ResourceManager.GetString("Left", resourceCulture);
+            }
+        }
+        
+        public static string Down {
+            get {
+                return ResourceManager.GetString("Down", resourceCulture);
+            }
+        }
+        
+        public static string Right {
+            get {
+                return ResourceManager.GetString("Right", resourceCulture);
+            }
+        }
     }
 }

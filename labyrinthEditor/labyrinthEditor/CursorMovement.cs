@@ -34,7 +34,7 @@ public class CursorMovement
         }
         Console.SetCursorPosition(0, Console.LargestWindowHeight - 2);
         Console.BackgroundColor = ConsoleColor.Red;
-        Console.Write($"{Resources.strings.Height}: {prevY}, {Resources.strings.Width}: {prevX}, UP: W, LEFT: A, DOWN: S, RIGHT:D");
+        Console.Write($"{Resources.strings.Height}: {prevY}, {Resources.strings.Width}: {prevX}, {Resources.strings.Up}: W, {Resources.strings.Left}: A, {Resources.strings.Down}: S, {Resources.strings.Right}: D, \n  ╬: 1, ═: 2, ╦: 3, ╩: 4, ║: 5, ╣: 6, ╠: 7, ╗: 8, ╝: 9, ╚: U, ╔:I");
         Console.SetCursorPosition(prevX, prevY);
         Console.BackgroundColor = ConsoleColor.Black;
     }
@@ -45,6 +45,7 @@ public class CursorMovement
         Console.SetCursorPosition(0, 0);
         while (enabled)
         {
+            DisplayCursorLocation();
             ConsoleKey key = Console.ReadKey(true).Key;
             DisplayCursorLocation();
             switch (key)

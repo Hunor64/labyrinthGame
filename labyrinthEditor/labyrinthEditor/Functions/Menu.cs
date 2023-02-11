@@ -73,7 +73,7 @@ namespace labyrinthEditor.Functions
             Console.Clear();
             Console.WriteLine("1. Hungarian/Magyar");
             Console.WriteLine("2. English");
-            Console.WriteLine($"3. {Resources.strings.ReturnToMenu}");
+            Console.WriteLine($"3. {Resources.strings.ReturnToTheMenu}");
             ConsoleKeyInfo input =  Console.ReadKey(true);
 
             switch (input.Key)
