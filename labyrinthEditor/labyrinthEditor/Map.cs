@@ -10,11 +10,12 @@ namespace labyrinthEditor
     {
         public char[,] map;
 
-        public void LoadMap(string filePath) {
+        public void LoadMap(string filePath)
+        {
             string[] lines = File.ReadAllLines(filePath);
             map = new char[lines.Count(), lines[0].Count()];
             for (int i = 0; i < lines.Count(); i++) {
-                for (int k = 0; k < lines.Count(); k++) {
+                for (int k = 0; k < lines[0].Count(); k++) {
                     map[i, k] = lines[i][k];
                 }
             }
@@ -35,7 +36,7 @@ namespace labyrinthEditor
                 for (int k = 0; k < map.GetLength(1); k++) {
                     Console.Write(map[i, k]);
                 }
-                Console.WriteLine();
+                Console.WriteLine("");
             }
         }
 

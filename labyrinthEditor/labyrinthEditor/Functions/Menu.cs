@@ -37,7 +37,7 @@ namespace labyrinthEditor.Functions
                         break;
                     case '2':
                         Console.WriteLine(Resources.strings.EnterAbsolutePath);
-                        string path = Console.ReadLine();
+                        string path = Console.ReadLine().Trim();
                         try {
                             File.Exists(path);
                             map.LoadMap(path);
