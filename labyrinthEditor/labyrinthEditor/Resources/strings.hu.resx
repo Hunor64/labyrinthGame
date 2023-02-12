@@ -168,4 +168,10 @@
   <data name="Right" xml:space="preserve">
     <value>Jobb</value>
   </data>
+  <data name="EnterFileName" xml:space="preserve">
+    <value>Adja meg a fájlnevet (fájlkiegészítés nélkül)</value>
+  </data>
+  <data name="EnterPathOrUseDefaultPath" xml:space="preserve">
+    <value>Adja meg a mentési útvonalat, vagy hagyja üresen ahhoz hogy a program a jelenlegi mappájába mentse</value>
+  </data>
 </root>

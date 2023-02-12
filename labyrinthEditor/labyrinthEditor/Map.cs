@@ -10,6 +10,22 @@ namespace labyrinthEditor
     {
         public char[,] map;
 
+        public char[] GetMapData()
+        {
+            char[] mapData = new char[map.Length + map.GetLength(0)];
+            int itrCtr = 1;
+            for (int i = 0; i < map.GetLength(0); i++)
+            {
+                for (int k = 0; k < map.GetLength(1); k++)
+                {
+                    mapData[i * k] = map[i, k];
+                }
+                mapData[map.GetLength(0) * itrCtr] = '\n';
+                itrCtr++;
+            }
+            return mapData;
+        }
+
         public void LoadMap(string filePath)
         {
             string[] lines = File.ReadAllLines(filePath);
