@@ -46,7 +46,7 @@ namespace LabirintusJatek
                         Console.Clear();
                         if (File.Exists("map.txt"))
                         {
-                            LaunchGame("map.txt");
+                            LaunchGame("map.txt",userlanguage);
                         }
                         else
                         {
@@ -73,7 +73,7 @@ namespace LabirintusJatek
 
                         if (File.Exists(filePath))
                         {
-                            LaunchGame(filePath);
+                            LaunchGame(filePath,userlanguage);
                         }
                         else
                         {
@@ -101,12 +101,14 @@ namespace LabirintusJatek
             }
         }
 
-        static void LaunchGame(string filePath)
+        static void LaunchGame(string filePath, char userlanguage)
         {
             char[,] map;
             bool canEscape = false;
+            int userMoves = 0;
             string[] lines = File.ReadAllLines(filePath);
             map = new char[lines.Count(), lines[0].Count()];
+            Console.BackgroundColor = ConsoleColor.Black;
             for (int i = 0; i < lines.Count(); i++)
             {
                 for (int k = 0; k < lines[0].Count(); k++)
@@ -143,12 +145,17 @@ namespace LabirintusJatek
             Console.SetCursorPosition(x, y);
             while (true)
             {
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                Console.Write(map[y, x]);
+                Console.BackgroundColor = ConsoleColor.Black;
                 char userMove = Console.ReadKey().KeyChar;
                 if (userMove == 'w' && y > 0 && map[y - 1, x] != '.')
                 {
                     if (map[y - 1, x] == '╬' || map[y - 1, x] == '╦' || map[y - 1, x] == '║' || map[y - 1, x] == '╣' || map[y - 1, x] == '╠' || map[y - 1, x] == '╗' || map[y - 1, x] == '╔' || map[y - 1, x] == '█')
                     {
                         y--;
+                        userMoves++;
+
                     }
 
 
@@ -158,6 +165,8 @@ namespace LabirintusJatek
                     if (map[y + 1, x] == '╬' || map[y + 1, x] == '╩' || map[y + 1, x] == '║' || map[y + 1, x] == '╣' || map[y + 1, x] == '╠' || map[y + 1, x] == '╝' || map[y + 1, x] == '╚' || map[y + 1, x] == '█')
                     {
                         y++;
+                        userMoves++;
+
                     }
 
                 }
@@ -166,6 +175,7 @@ namespace LabirintusJatek
                     if (map[y, x - 1] == '╬' || map[y, x - 1] == '═' || map[y, x - 1] == '╦' || map[y, x - 1] == '╩' || map[y, x - 1] == '╠' || map[y, x - 1] == '╚' || map[y, x - 1] == '╔' || map[y, x - 1] == '█')
                     {
                         x--;
+                        userMoves++;
 
                     }
                 }
@@ -174,6 +184,7 @@ namespace LabirintusJatek
                     if (map[y, x + 1] == '╬' || map[y, x + 1] == '═' || map[y, x + 1] == '╦' || map[y, x + 1] == '╩' || map[y, x + 1] == '╣' || map[y, x + 1] == '╗' || map[y, x + 1] == '╝' || map[y, x + 1] == '█')
                     {
                         x++;
+                        userMoves++;
                     }
                 }
                 else if (userMove == 'q')
@@ -181,6 +192,7 @@ namespace LabirintusJatek
                     break;
                 }
                 Console.Clear();
+                Console.BackgroundColor = ConsoleColor.Black;
                 if (map[y, x] == '█')
                 {
                     roomReached = true;
@@ -195,7 +207,23 @@ namespace LabirintusJatek
                 }
                 if (roomReached)
                 {
-                    Console.WriteLine("Kincs megtalálva!");
+                    if (userlanguage == '1')
+                    {
+                        Console.WriteLine("Kincs megtalálva!");
+                    }
+                    else if (userlanguage == '2')
+                    {
+                        Console.WriteLine("Treasure found!");
+                    }
+                }
+                if (userlanguage == '1')
+                {
+
+                    Console.WriteLine("Lépések száma: "+userMoves.ToString());
+                }
+                else if (userlanguage == '2')
+                {
+                    Console.WriteLine("Moves so far: "+userMoves.ToString());
                 }
                 Console.SetCursorPosition(x, y);
                 if (map[y, x] == '═' && x == 0 || map[y, x] == '═' && x == xmax - 1 || map[y, x] == '║' && y == 0 || map[y, x] == '║' && y == ymax - 1)
@@ -209,7 +237,17 @@ namespace LabirintusJatek
                 if (canEscape && roomReached)
                 {
                     Console.Clear();
-                    Console.WriteLine("Nyertél!");
+                    if (userlanguage == '1')
+                    {
+                        Console.WriteLine("Nyertél!");
+                        Console.WriteLine(userMoves.ToString()+" lépésekből nyertél!");
+                    }
+                    else if (userlanguage == '2')
+                    {
+                        Console.WriteLine("Treasure found!");
+                        Console.WriteLine("You moved "+userMoves.ToString()+" times");
+                    }
+
                     Console.ReadKey();
                     break;
                 }
