@@ -44,7 +44,14 @@ namespace LabirintusJatek
                 {
                     case '1':
                         Console.Clear();
+                        if (File.Exists("map.txt"))
+                        {
                         LaunchGame("map.txt");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Még nincs mentésed!");
+                        }
                         break;
 
                     case '2':
@@ -136,6 +143,8 @@ namespace LabirintusJatek
             Console.SetCursorPosition(x, y);
             while (true)
             {
+                Console.BackgroundColor. = ConsoleColor.Red;
+                
                 char userMove = Console.ReadKey().KeyChar;
                 if (userMove == 'w' && y > 0 && map[y - 1, x] != '.')
                 {
