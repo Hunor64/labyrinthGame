@@ -321,7 +321,7 @@ namespace LabirintusJatek
                             Console.WriteLine("Treasure found!");
                             Console.WriteLine("You moved " + userMoves.ToString() + " times");
                             Console.WriteLine("It took you " + Convert.ToInt32(elapsedTime.TotalSeconds) + " seconds to complete te maze!");
-                            Console.WriteLine("Press 'Q' to quit!w");
+                            Console.WriteLine("Press 'Q' to quit!");
                         }
 
                         userExit = Console.ReadKey().KeyChar;
