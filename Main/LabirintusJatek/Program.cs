@@ -107,7 +107,7 @@ namespace LabirintusJatek
             {
                 for (int k = 0; k < map.GetLength(1); k++)
                 {
-                    if (map[i,k] == '█')
+                    if (map[i, k] == '█')
                     {
                         RoomNumber++;
                     }
@@ -133,6 +133,7 @@ namespace LabirintusJatek
                 }
             }
             int allRoomsReached = 0;
+            int remainingDig = 3;
             int roomNumber = GetRoomNumber(map);
             bool roomReached = false;
             int ymax = map.GetLength(0); ;
@@ -162,9 +163,9 @@ namespace LabirintusJatek
             }
             DateTime startTime = DateTime.Now;
             Console.SetCursorPosition(x, y);
+            bool diggingActive = false;
             while (true)
             {
-
                 Console.BackgroundColor = ConsoleColor.DarkBlue;
                 Console.Write(map[y, x]);
                 Console.BackgroundColor = ConsoleColor.Black;
@@ -175,6 +176,13 @@ namespace LabirintusJatek
                     {
                         y--;
                         userMoves++;
+                    }
+                    else if (diggingActive)
+                    {
+                        y--;
+                        userMoves++;
+                        diggingActive = false;
+                        remainingDig--;
 
                     }
 
@@ -187,6 +195,15 @@ namespace LabirintusJatek
                         y++;
                         userMoves++;
 
+
+                    }
+                    else if (diggingActive)
+                    {
+                        y++;
+                        userMoves++;
+                        diggingActive = false;
+                        remainingDig--;
+
                     }
 
                 }
@@ -196,6 +213,13 @@ namespace LabirintusJatek
                     {
                         x--;
                         userMoves++;
+                    }
+                    else if (diggingActive)
+                    {
+                        x--;
+                        userMoves++;
+                        diggingActive = false;
+                        remainingDig--;
 
                     }
                 }
@@ -206,10 +230,25 @@ namespace LabirintusJatek
                         x++;
                         userMoves++;
                     }
+                    else if (diggingActive)
+                    {
+                        x++;
+                        userMoves++;
+                        diggingActive = false;
+                        remainingDig--;
+                    }
                 }
                 else if (userMove == 'q')
                 {
                     break;
+                }
+                else if (userMove == 'e')
+                {
+                    if (remainingDig != 0)
+                    {
+                        diggingActive = true;
+
+                    }
                 }
                 Console.Clear();
                 Console.BackgroundColor = ConsoleColor.Black;
@@ -227,7 +266,7 @@ namespace LabirintusJatek
                 }
                 if (allRoomsReached == roomNumber)
                 {
-                    roomReached= true;
+                    roomReached = true;
                     if (userlanguage == '1')
                     {
                         Console.WriteLine("Kincs megtalálva!");
@@ -245,6 +284,14 @@ namespace LabirintusJatek
                 else if (userlanguage == '2')
                 {
                     Console.WriteLine("Moves so far: " + userMoves.ToString());
+                }
+                if (userlanguage == '1')
+                {
+                    Console.WriteLine("Fúrások mennyisége: " + remainingDig);
+                }
+                else if (userlanguage == '2')
+                {
+                    Console.WriteLine(remainingDig + " digs remaining");
                 }
                 Console.SetCursorPosition(x, y);
                 if (map[y, x] == '═' && x == 0 || map[y, x] == '═' && x == xmax - 1 || map[y, x] == '║' && y == 0 || map[y, x] == '║' && y == ymax - 1)
@@ -266,7 +313,7 @@ namespace LabirintusJatek
                         {
                             Console.WriteLine("Nyertél!");
                             Console.WriteLine(userMoves.ToString() + " lépésekből nyertél!");
-                            Console.WriteLine(Convert.ToInt32(elapsedTime.TotalSeconds) + " másodperc kellett hogy végigmeny a labirintuson!");
+                            Console.WriteLine(Convert.ToInt32(elapsedTime.TotalSeconds) + " másodperc kellett hogy végigmenj a labirintuson!");
                             Console.WriteLine("Nyomd meg a 'Q' gombot a kilépéshez!");
                         }
                         else if (userlanguage == '2')
