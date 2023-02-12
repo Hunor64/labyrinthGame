@@ -22,21 +22,17 @@ namespace LabirintusJatek
                 if (userlanguage == '1')
                 {
                     Console.WriteLine("1. Játék gyors folytatása");
-                    Console.WriteLine("2. Új pálya");
-                    Console.WriteLine("3. Pálya betöltése");
-                    Console.WriteLine("4. Pályaszerkeztő megnyitása");
-                    Console.WriteLine("5. Nyelv változtatása / Change language");
-                    Console.WriteLine("6. Kilépés");
+                    Console.WriteLine("2. Pálya betöltése");
+                    Console.WriteLine("3. Nyelv változtatása / Change language");
+                    Console.WriteLine("4. Kilépés");
                     userChoise = Console.ReadKey().KeyChar;
                 }
                 else if (userlanguage == '2')
                 {
                     Console.WriteLine("1. Quick resume game");
-                    Console.WriteLine("2. New game");
-                    Console.WriteLine("3. Load game");
-                    Console.WriteLine("4. Open map editor");
-                    Console.WriteLine("5. Change language / Nyelv változtatása");
-                    Console.WriteLine("6. Quit game");
+                    Console.WriteLine("2. Load game");
+                    Console.WriteLine("3. Change language / Nyelv változtatása");
+                    Console.WriteLine("4. Quit game");
                     userChoise = Console.ReadKey().KeyChar;
                 }
                 string filePath = "map.txt";
@@ -53,17 +49,16 @@ namespace LabirintusJatek
                             Console.WriteLine("Még nincs mentésed!");
                         }
                         break;
-
                     case '2':
-                        Console.Clear();
-                        
-                        break;
-
-                    case '3':
                         Console.Clear();
                         if (userlanguage == '1')
                         {
                             Console.Write("Adja meg a pálya helyét: ");
+                            filePath = Console.ReadLine();
+                        }
+                        else if (userlanguage == '2')
+                        {
+                            Console.Write("Enter file location: ");
                             filePath = Console.ReadLine();
                         }
                         if (filePath.StartsWith('"') && filePath.EndsWith('"'))
@@ -81,19 +76,14 @@ namespace LabirintusJatek
                         }
                         break;
 
-                    case '4':
-                        Console.Clear();
-
-                        break;
-
-                    case '5':
+                    case '3':
                         Console.Clear();
                         Console.WriteLine("Válasszon nyelvet! / Choose a Language:\n1. Magyar\n2. English");
                         userlanguage = Console.ReadKey().KeyChar;
                         Console.Clear();
                         break;
                 }
-                if (userChoise == '6')
+                if (userChoise == '4')
                 {
                     break;
                 }
