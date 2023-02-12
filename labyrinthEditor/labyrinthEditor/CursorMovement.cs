@@ -34,7 +34,7 @@ public class CursorMovement
         }
         Console.SetCursorPosition(0, Console.WindowHeight - 2);
         Console.BackgroundColor = ConsoleColor.Red;
-        Console.Write($"{Resources.strings.Height}: {prevY}, {Resources.strings.Width}: {prevX}, {Resources.strings.Up}: W, {Resources.strings.Left}: A, {Resources.strings.Down}: S, {Resources.strings.Right}: D, {Resources.strings.Save}: L\n ╬: 1, ═: 2, ╦: 3, ╩: 4, ║: 5, ╣: 6, ╠: 7, ╗: 8, ╝: 9, ╚: U, ╔:I");
+        Console.Write($"{Resources.strings.Height}: {prevY}, {Resources.strings.Width}: {prevX}, {Resources.strings.Up}: W, {Resources.strings.Left}: A, {Resources.strings.Down}: S, {Resources.strings.Right}: D, {Resources.strings.Save}: L, {Resources.strings.PlaceChamber}: H\n ╬: 1, ═: 2, ╦: 3, ╩: 4, ║: 5, ╣: 6, ╠: 7, ╗: 8, ╝: 9, ╚: U, ╔:I");
         Console.SetCursorPosition(prevX, prevY);
         Console.BackgroundColor = ConsoleColor.Black;
     }
@@ -122,6 +122,13 @@ public class CursorMovement
                     map.map[y, x] = mapelements.getElement(10);
                     map.PrintMap();
                     break;
+                case ConsoleKey.H:
+                    {
+                        map.map[y, x] = '█';
+                        map.chamberExists = true;
+                        map.PrintMap();
+                        break;
+                    }
                 case ConsoleKey.L:
                     Save.SaveFile(map);
                     break;
