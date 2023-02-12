@@ -97,6 +97,7 @@ namespace LabirintusJatek
         static void LaunchGame(string filePath)
         {
             char[,] map;
+            bool canEscape = false;
             string[] lines = File.ReadAllLines(filePath);
             map = new char[lines.Count(), lines[0].Count()];
             for (int i = 0; i < lines.Count(); i++)
@@ -106,15 +107,77 @@ namespace LabirintusJatek
                     map[i, k] = lines[i][k];
                 }
             }
+            bool roomReached = false;
+            int ymax = map.GetLength(0); ;
+            int xmax = map.GetLength(1);
+            int x = 0;
+            int y = 0;
+            Console.Clear();
+            Console.SetCursorPosition(x, y);
+            for (int i = 0; i < map.GetLength(0); i++)
+            {
+                for (int k = 0; k < map.GetLength(1); k++)
+                {
+                    Console.Write(map[i, k]);
+                }
+                Console.WriteLine("");
+            }
             while (true)
             {
-                bool roomReached = false;
-                int ymax = map.GetLength(0); ;
-                int xmax = map.GetLength(1);
-                int x = 0;
-                int y = 0;
+                if (map[y, x] == '.')
+                {
+                    y++;
+                }
+                if (map[y, x] != '.')
+                {
+                    break;
+                }
+            }
+            Console.SetCursorPosition(x, y);
+            while (true)
+            {
+                char userMove = Console.ReadKey().KeyChar;
+                if (userMove == 'w' && y > 0 && map[y - 1, x] != '.')
+                {
+                    if (map[y - 1, x] == '╬' || map[y - 1, x] == '╦' || map[y - 1, x] == '║' || map[y - 1, x] == '╣' || map[y - 1, x] == '╠' || map[y - 1, x] == '╗' || map[y - 1, x] == '╔' || map[y - 1, x] == '█')
+                    {
+                        y--;
+                    }
+
+
+                }
+                else if (userMove == 's' && y + 1 < ymax && map[y + 1, x] != '.')
+                {
+                    if (map[y + 1, x] == '╬' || map[y + 1, x] == '╩' || map[y + 1, x] == '║' || map[y + 1, x] == '╣' || map[y + 1, x] == '╠' || map[y + 1, x] == '╝' || map[y + 1, x] == '╚' || map[y + 1, x] == '█')
+                    {
+                        y++;
+                    }
+
+                }
+                else if (userMove == 'a' && x > 0 && map[y, x - 1] != '.')
+                {
+                    if (map[y, x - 1] == '╬' || map[y, x - 1] == '═' || map[y, x - 1] == '╦' || map[y, x - 1] == '╩' || map[y, x - 1] == '╠' || map[y, x - 1] == '╚' || map[y, x - 1] == '╔' || map[y, x - 1] == '█')
+                    {
+                        x--;
+
+                    }
+                }
+                else if (userMove == 'd' && x != xmax && map[y, x + 1] != '.')
+                {
+                    if (map[y, x + 1] == '╬' || map[y, x + 1] == '═' || map[y, x + 1] == '╦' || map[y, x + 1] == '╩' || map[y, x + 1] == '╣' || map[y, x + 1] == '╗' || map[y, x + 1] == '╝' || map[y, x + 1] == '█')
+                    {
+                        x++;
+                    }
+                }
+                else if (userMove == 'q')
+                {
+                    break;
+                }
                 Console.Clear();
-                Console.SetCursorPosition(x, y);
+                if (map[y, x] == '█')
+                {
+                    roomReached = true;
+                }
                 for (int i = 0; i < map.GetLength(0); i++)
                 {
                     for (int k = 0; k < map.GetLength(1); k++)
@@ -123,65 +186,27 @@ namespace LabirintusJatek
                     }
                     Console.WriteLine("");
                 }
-                while (true)
+                if (roomReached)
                 {
-                    if (map[y, x] == '.')
-                    {
-                        y++;
-                    }
-                    if (map[y, x] != '.')
-                    {
-                        break;
-                    }
+                    Console.WriteLine("Kincs megtalálva!");
                 }
                 Console.SetCursorPosition(x, y);
-                while (true)
+                if (map[y, x] == '═' && x == 0 || map[y, x] == '═' && x == xmax - 1 || map[y, x] == '║' && y == 0 || map[y, x] == '║' && y == ymax - 1)
                 {
-                    char userMove = Console.ReadKey().KeyChar;
-                    if (userMove == 'w' && y > 0 && map[y - 1,x] != '.')
-                    {
-                        y--;
-
-                    }
-                    else if (userMove == 's' && y + 1 < ymax && map[y + 1,x] != '.')
-                    {
-                        y++;
-                    }
-                    else if (userMove == 'a' && x > 0 && map[y,x-1] != '.')
-                    {
-                        x--;
-                    }
-                    else if (userMove == 'd' && x != xmax && map[y,x+1] != '.')
-                    {
-                        x++;
-                    }
-                    else if (userMove == 'q')
-                    {
-                        break;
-                    }
+                    canEscape = true;
+                }
+                else
+                {
+                    canEscape = false;
+                }
+                if (canEscape && roomReached)
+                {
                     Console.Clear();
-                    if (map[y,x]== '█')
-                    {
-                        roomReached = true;
-                    }
-
-                    for (int i = 0; i < map.GetLength(0); i++)
-                    {
-                        for (int k = 0; k < map.GetLength(1); k++)
-                        {
-                            Console.Write(map[i, k]);
-                        }
-                        Console.WriteLine("");
-                    }
-                    if (roomReached)
-                    {
-                        Console.WriteLine("Kincs megtalálva!");
-                    }
-                    Console.SetCursorPosition(x, y);
-
+                    Console.WriteLine("Nyertél!");
+                    Console.ReadKey();
+                    break;
                 }
             }
-
         }
     }
 }
