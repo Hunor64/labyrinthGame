@@ -4,6 +4,4 @@ class MapElements {
     public char getElement(int num) {
         return mapElements[num];
     }
-
-    
 }

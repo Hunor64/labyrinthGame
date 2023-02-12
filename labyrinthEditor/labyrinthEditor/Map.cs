@@ -9,6 +9,7 @@ namespace labyrinthEditor
     public class Map
     {
         public char[,] map;
+        public bool chamberExists = false;
 
         public string GetMapDataAsString()
         {
@@ -33,6 +34,10 @@ namespace labyrinthEditor
             for (int i = 0; i < lines.Count(); i++) {
                 for (int k = 0; k < lines[0].Count(); k++) {
                     map[i, k] = lines[i][k];
+                    if (map[i, k] == '█')
+                    {
+                        chamberExists = true;
+                    }
                 }
             }
         }
