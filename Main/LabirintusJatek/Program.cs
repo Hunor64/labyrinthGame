@@ -56,7 +56,7 @@ namespace LabirintusJatek
 
                     case '2':
                         Console.Clear();
-
+                        
                         break;
 
                     case '3':
@@ -116,7 +116,46 @@ namespace LabirintusJatek
             return RoomNumber;
 
         }
-
+        static int GetSuitableEntrance(char[,] map)
+        {
+            int entarances = 0;
+            int x = 0, y = 0;
+            while (y!=map.GetLength(0))
+            {
+                if (map[y, 0] == '═')
+                {
+                    entarances++;
+                }
+                y++;
+            }
+            y = 0;
+            while (y != map.GetLength(0))
+            {
+                if (map[y, map.GetLength(1)-1] == '═')
+                {
+                    entarances++;
+                }
+                y++;
+            }
+            while (x != map.GetLength(1))
+            {
+                if (map[0, x] == '║')
+                {
+                    entarances++;
+                }
+                x++;
+            }
+            x = 0;
+            while (x != map.GetLength(1))
+            {
+                if (map[map.GetLength(0)-1, x] == '║')
+                {
+                    entarances++;
+                }
+                x++;
+            }
+            return entarances;
+        }
         static void LaunchGame(string filePath, char userlanguage)
         {
             char[,] map;
@@ -323,7 +362,6 @@ namespace LabirintusJatek
                             Console.WriteLine("It took you " + Convert.ToInt32(elapsedTime.TotalSeconds) + " seconds to complete te maze!");
                             Console.WriteLine("Press 'Q' to quit!");
                         }
-
                         userExit = Console.ReadKey().KeyChar;
                     }
                     break;
