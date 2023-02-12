@@ -46,7 +46,7 @@ namespace LabirintusJatek
                         Console.Clear();
                         if (File.Exists("map.txt"))
                         {
-                            LaunchGame("map.txt",userlanguage);
+                            LaunchGame("map.txt", userlanguage);
                         }
                         else
                         {
@@ -73,7 +73,7 @@ namespace LabirintusJatek
 
                         if (File.Exists(filePath))
                         {
-                            LaunchGame(filePath,userlanguage);
+                            LaunchGame(filePath, userlanguage);
                         }
                         else
                         {
@@ -100,6 +100,22 @@ namespace LabirintusJatek
 
             }
         }
+        static int GetRoomNumber(char[,] map)
+        {
+            int RoomNumber = 0;
+            for (int i = 0; i < map.GetLength(0); i++)
+            {
+                for (int k = 0; k < map.GetLength(1); k++)
+                {
+                    if (map[i,k] == '█')
+                    {
+                        RoomNumber++;
+                    }
+                }
+            }
+            return RoomNumber;
+
+        }
 
         static void LaunchGame(string filePath, char userlanguage)
         {
@@ -116,6 +132,8 @@ namespace LabirintusJatek
                     map[i, k] = lines[i][k];
                 }
             }
+            int allRoomsReached = 0;
+            int roomNumber = GetRoomNumber(map);
             bool roomReached = false;
             int ymax = map.GetLength(0); ;
             int xmax = map.GetLength(1);
@@ -142,9 +160,11 @@ namespace LabirintusJatek
                     break;
                 }
             }
+            DateTime startTime = DateTime.Now;
             Console.SetCursorPosition(x, y);
             while (true)
             {
+
                 Console.BackgroundColor = ConsoleColor.DarkBlue;
                 Console.Write(map[y, x]);
                 Console.BackgroundColor = ConsoleColor.Black;
@@ -195,7 +215,7 @@ namespace LabirintusJatek
                 Console.BackgroundColor = ConsoleColor.Black;
                 if (map[y, x] == '█')
                 {
-                    roomReached = true;
+                    allRoomsReached++;
                 }
                 for (int i = 0; i < map.GetLength(0); i++)
                 {
@@ -205,8 +225,9 @@ namespace LabirintusJatek
                     }
                     Console.WriteLine("");
                 }
-                if (roomReached)
+                if (allRoomsReached == roomNumber)
                 {
+                    roomReached= true;
                     if (userlanguage == '1')
                     {
                         Console.WriteLine("Kincs megtalálva!");
@@ -219,11 +240,11 @@ namespace LabirintusJatek
                 if (userlanguage == '1')
                 {
 
-                    Console.WriteLine("Lépések száma: "+userMoves.ToString());
+                    Console.WriteLine("Lépések száma: " + userMoves.ToString());
                 }
                 else if (userlanguage == '2')
                 {
-                    Console.WriteLine("Moves so far: "+userMoves.ToString());
+                    Console.WriteLine("Moves so far: " + userMoves.ToString());
                 }
                 Console.SetCursorPosition(x, y);
                 if (map[y, x] == '═' && x == 0 || map[y, x] == '═' && x == xmax - 1 || map[y, x] == '║' && y == 0 || map[y, x] == '║' && y == ymax - 1)
@@ -236,19 +257,28 @@ namespace LabirintusJatek
                 }
                 if (canEscape && roomReached)
                 {
-                    Console.Clear();
-                    if (userlanguage == '1')
+                    TimeSpan elapsedTime = DateTime.Now - startTime;
+                    char userExit = 'a';
+                    while (userExit != 'q')
                     {
-                        Console.WriteLine("Nyertél!");
-                        Console.WriteLine(userMoves.ToString()+" lépésekből nyertél!");
-                    }
-                    else if (userlanguage == '2')
-                    {
-                        Console.WriteLine("Treasure found!");
-                        Console.WriteLine("You moved "+userMoves.ToString()+" times");
-                    }
+                        Console.Clear();
+                        if (userlanguage == '1')
+                        {
+                            Console.WriteLine("Nyertél!");
+                            Console.WriteLine(userMoves.ToString() + " lépésekből nyertél!");
+                            Console.WriteLine(Convert.ToInt32(elapsedTime.TotalSeconds) + " másodperc kellett hogy végigmeny a labirintuson!");
+                            Console.WriteLine("Nyomd meg a 'Q' gombot a kilépéshez!");
+                        }
+                        else if (userlanguage == '2')
+                        {
+                            Console.WriteLine("Treasure found!");
+                            Console.WriteLine("You moved " + userMoves.ToString() + " times");
+                            Console.WriteLine("It took you " + Convert.ToInt32(elapsedTime.TotalSeconds) + " seconds to complete te maze!");
+                            Console.WriteLine("Press 'Q' to quit!w");
+                        }
 
-                    Console.ReadKey();
+                        userExit = Console.ReadKey().KeyChar;
+                    }
                     break;
                 }
             }
