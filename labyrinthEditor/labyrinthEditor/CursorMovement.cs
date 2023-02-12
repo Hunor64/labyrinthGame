@@ -1,4 +1,4 @@
-namespace labyrinthEditor;
+﻿namespace labyrinthEditor;
 
 public class CursorMovement
 {
@@ -27,14 +27,14 @@ public class CursorMovement
         int prevX = GetXCoord();
         int prevY = GetYCoord();
         Console.BackgroundColor = ConsoleColor.Black;
-        Console.SetCursorPosition(0, Console.LargestWindowHeight - 2);
+        Console.SetCursorPosition(0, Console.WindowHeight - 2);
         for (int i = 0; i < Console.LargestWindowWidth; i++)
         {
             Console.Write(" ");
         }
-        Console.SetCursorPosition(0, Console.LargestWindowHeight - 2);
+        Console.SetCursorPosition(0, Console.WindowHeight - 2);
         Console.BackgroundColor = ConsoleColor.Red;
-        Console.Write($"{Resources.strings.Height}: {prevY}, {Resources.strings.Width}: {prevX}, {Resources.strings.Up}: W, {Resources.strings.Left}: A, {Resources.strings.Down}: S, {Resources.strings.Right}: D, \n  ╬: 1, ═: 2, ╦: 3, ╩: 4, ║: 5, ╣: 6, ╠: 7, ╗: 8, ╝: 9, ╚: U, ╔:I");
+        Console.Write($"{Resources.strings.Height}: {prevY}, {Resources.strings.Width}: {prevX}, {Resources.strings.Up}: W, {Resources.strings.Left}: A, {Resources.strings.Down}: S, {Resources.strings.Right}: D, \n ╬: 1, ═: 2, ╦: 3, ╩: 4, ║: 5, ╣: 6, ╠: 7, ╗: 8, ╝: 9, ╚: U, ╔:I");
         Console.SetCursorPosition(prevX, prevY);
         Console.BackgroundColor = ConsoleColor.Black;
     }
@@ -68,7 +68,6 @@ public class CursorMovement
                     {
                         y++;
                     }
-
                     break;
                 case ConsoleKey.D:
                     if (x < map.GetLength() -1)
