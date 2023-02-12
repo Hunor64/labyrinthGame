@@ -1,4 +1,5 @@
 using labyrinthEditor;
+using System.Text;
 
 internal class Save {
     public static void SaveFile(Map map) {
@@ -7,13 +8,23 @@ internal class Save {
         string fileName = Console.ReadLine() + ".sav";
         if (fileName == ".sav")
         {
-            
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(labyrinthEditor.Resources.strings.Error_InvalidFileName);
+            Console.WriteLine(labyrinthEditor.Resources.strings.PressEnterToContinue);
+            Console.ReadKey();
+            Console.ForegroundColor = ConsoleColor.White;
+            SaveFile(map);
+
         }
-        Console.WriteLine("Lorem ipsum"); //TODO: Change this to the proper resource string
+        Console.WriteLine(labyrinthEditor.Resources.strings.EnterPathOrUseDefaultPath); 
         string path = Console.ReadLine();
         if (path == "")
         {
-            //File.WriteAllBytes(Directory.GetCurrentDirectory() + fileName, map.GetMapData());
+            File.WriteAllText(fileName, map.GetMapDataAsString());
+        }
+        else
+        {
+            File.WriteAllText(path + fileName, map.GetMapDataAsString());
         }
     }
 }

@@ -124,6 +124,15 @@ namespace labyrinthEditor.Resources {
         }
         
         /// <summary>
+        ///   Error: Invalid filename に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_InvalidFileName {
+            get {
+                return ResourceManager.GetString("Error_InvalidFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Error: This path doesn&apos;t exist に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Error_PathDoesntExist {
@@ -210,6 +219,15 @@ namespace labyrinthEditor.Resources {
         public static string Right {
             get {
                 return ResourceManager.GetString("Right", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Save に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         

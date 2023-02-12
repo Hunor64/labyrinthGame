@@ -11,7 +11,7 @@ namespace labyrinthEditor
         public static void DisplayMenu()
         {
             Console.Clear();
-            Console.WriteLine(Resources.strings.MenuTitle);
+            Console.WriteLine();
             Console.WriteLine("1. " + Resources.strings.MenuItemCreateMap);
             Console.WriteLine("2. " + Resources.strings.MenuItemLoadMap);
             Console.WriteLine("3. " + Resources.strings.ChangeLanguage);
