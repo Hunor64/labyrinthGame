@@ -46,7 +46,7 @@ namespace LabirintusJatek
                         Console.Clear();
                         if (File.Exists("map.txt"))
                         {
-                        LaunchGame("map.txt");
+                            LaunchGame("map.txt");
                         }
                         else
                         {
@@ -143,8 +143,6 @@ namespace LabirintusJatek
             Console.SetCursorPosition(x, y);
             while (true)
             {
-                Console.BackgroundColor. = ConsoleColor.Red;
-                
                 char userMove = Console.ReadKey().KeyChar;
                 if (userMove == 'w' && y > 0 && map[y - 1, x] != '.')
                 {
