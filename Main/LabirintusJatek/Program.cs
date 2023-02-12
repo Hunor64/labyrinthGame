@@ -108,7 +108,7 @@ namespace LabirintusJatek
             }
             while (true)
             {
-
+                bool roomReached = false;
                 int ymax = map.GetLength(0); ;
                 int xmax = map.GetLength(1);
                 int x = 0;
@@ -123,23 +123,35 @@ namespace LabirintusJatek
                     }
                     Console.WriteLine("");
                 }
+                while (true)
+                {
+                    if (map[y, x] == '.')
+                    {
+                        y++;
+                    }
+                    if (map[y, x] != '.')
+                    {
+                        break;
+                    }
+                }
                 Console.SetCursorPosition(x, y);
                 while (true)
                 {
                     char userMove = Console.ReadKey().KeyChar;
-                    if (userMove == 'w' && y > 0)
+                    if (userMove == 'w' && y > 0 && map[y - 1,x] != '.')
                     {
                         y--;
+
                     }
-                    else if (userMove == 's' && y + 1 < ymax)
+                    else if (userMove == 's' && y + 1 < ymax && map[y + 1,x] != '.')
                     {
                         y++;
                     }
-                    else if (userMove == 'a' && x > 0)
+                    else if (userMove == 'a' && x > 0 && map[y,x-1] != '.')
                     {
                         x--;
                     }
-                    else if (userMove == 'd' && x != xmax)
+                    else if (userMove == 'd' && x != xmax && map[y,x+1] != '.')
                     {
                         x++;
                     }
@@ -148,6 +160,11 @@ namespace LabirintusJatek
                         break;
                     }
                     Console.Clear();
+                    if (map[y,x]== '█')
+                    {
+                        roomReached = true;
+                    }
+
                     for (int i = 0; i < map.GetLength(0); i++)
                     {
                         for (int k = 0; k < map.GetLength(1); k++)
@@ -156,7 +173,12 @@ namespace LabirintusJatek
                         }
                         Console.WriteLine("");
                     }
+                    if (roomReached)
+                    {
+                        Console.WriteLine("Kincs megtalálva!");
+                    }
                     Console.SetCursorPosition(x, y);
+
                 }
             }
 
