@@ -1,6 +1,5 @@
 ﻿using System.Resources;
 using System.Globalization;
-using labyrinthEditor.Functions;
 using System.Text;
 
 namespace labyrinthEditor;

@@ -168,4 +168,16 @@
   <data name="Right" xml:space="preserve">
     <value>Right</value>
   </data>
+  <data name="EnterFileName" xml:space="preserve">
+    <value>Enter the filename (without extension)</value>
+  </data>
+  <data name="EnterPathOrUseDefaultPath" xml:space="preserve">
+    <value>Enter the save path (or leave empty to save to the program's location)</value>
+  </data>
+  <data name="Error_InvalidFileName" xml:space="preserve">
+    <value>Error: Invalid filename</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
 </root>

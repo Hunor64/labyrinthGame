@@ -42,19 +42,16 @@
     <Compile Update="Resources\strings.jp.Designer.cs">
       <DependentUpon>strings.jp.resx</DependentUpon>
     </Compile>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Resources\strings.Designer.cs">
+    <Compile Update="Resources\strings.Designer.cs">
       <DependentUpon>strings.resx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Resources\strings.hu.Designer.cs">
+    <Compile Update="Resources\strings.hu.Designer.cs">
       <DependentUpon>strings.hu.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
   </ItemGroup>
 </Project>
