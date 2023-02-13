@@ -34,11 +34,11 @@ public class CursorMovement
         }
         Console.SetCursorPosition(0, Console.WindowHeight - 2);
         Console.BackgroundColor = ConsoleColor.Red;
-        Console.Write($"{Resources.strings.Height}: {prevY}, {Resources.strings.Width}: {prevX}, {Resources.strings.Up}: W, {Resources.strings.Left}: A, {Resources.strings.Down}: S, {Resources.strings.Right}: D, {Resources.strings.Save}: L\n ╬: 1, ═: 2, ╦: 3, ╩: 4, ║: 5, ╣: 6, ╠: 7, ╗: 8, ╝: 9, ╚: U, ╔:I");
+        Console.Write($"{Resources.strings.Height}: {prevY}, {Resources.strings.Width}: {prevX}, {Resources.strings.Up}: W, {Resources.strings.Left}: A, {Resources.strings.Down}: S, {Resources.strings.Right}: D, {Resources.strings.Save}: L, {Resources.strings.PlaceChamber}: H\n ╬: 1, ═: 2, ╦: 3, ╩: 4, ║: 5, ╣: 6, ╠: 7, ╗: 8, ╝: 9, ╚: U, ╔:I");
         Console.SetCursorPosition(prevX, prevY);
         Console.BackgroundColor = ConsoleColor.Black;
     }
-    
+
     public void EnableCursorMovement(Map map)
     {
         bool enabled = true;
@@ -53,7 +53,7 @@ public class CursorMovement
                 case ConsoleKey.W:
                     if (y != 0)
                     {
-                        y--; 
+                        y--;
                     }
                     break;
                 case ConsoleKey.A:
@@ -64,13 +64,13 @@ public class CursorMovement
 
                     break;
                 case ConsoleKey.S:
-                    if (y < map.GetHeight() -1)
+                    if (y < map.GetHeight() - 1)
                     {
                         y++;
                     }
                     break;
                 case ConsoleKey.D:
-                    if (x < map.GetLength() -1)
+                    if (x < map.GetLength() - 1)
                     {
                         x++;
                     }
@@ -122,6 +122,13 @@ public class CursorMovement
                     map.map[y, x] = mapelements.getElement(10);
                     map.PrintMap();
                     break;
+                case ConsoleKey.H:
+                    {
+                        map.map[y, x] = '█';
+                        map.chamberExists = true;
+                        map.PrintMap();
+                        break;
+                    }
                 case ConsoleKey.L:
                     Save.SaveFile(map);
                     break;
