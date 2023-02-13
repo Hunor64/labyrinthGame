@@ -79,6 +79,15 @@ namespace labyrinthEditor.Resources {
         }
         
         /// <summary>
+        ///   Chamber に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Chamber {
+            get {
+                return ResourceManager.GetString("Chamber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Change language に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ChangeLanguage {
@@ -129,6 +138,15 @@ namespace labyrinthEditor.Resources {
         public static string Error_InvalidFileName {
             get {
                 return ResourceManager.GetString("Error_InvalidFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Error: No chamber on the map に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Error_NoChamber {
+            get {
+                return ResourceManager.GetString("Error_NoChamber", resourceCulture);
             }
         }
         
@@ -192,6 +210,15 @@ namespace labyrinthEditor.Resources {
         public static string MenuTitle {
             get {
                 return ResourceManager.GetString("MenuTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Place chamber に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PlaceChamber {
+            get {
+                return ResourceManager.GetString("PlaceChamber", resourceCulture);
             }
         }
         

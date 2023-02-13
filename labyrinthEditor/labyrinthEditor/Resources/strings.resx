@@ -177,6 +177,15 @@
   <data name="Error_InvalidFileName" xml:space="preserve">
     <value>Error: Invalid filename</value>
   </data>
+  <data name="Chamber" xml:space="preserve">
+    <value>Chamber</value>
+  </data>
+  <data name="Error_NoChamber" xml:space="preserve">
+    <value>Error: No chamber on the map</value>
+  </data>
+  <data name="PlaceChamber" xml:space="preserve">
+    <value>Place chamber</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
