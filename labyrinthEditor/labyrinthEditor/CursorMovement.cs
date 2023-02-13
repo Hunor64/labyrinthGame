@@ -27,14 +27,14 @@ public class CursorMovement
         int prevX = GetXCoord();
         int prevY = GetYCoord();
         Console.BackgroundColor = ConsoleColor.Black;
-        Console.SetCursorPosition(0, Console.WindowHeight - 2);
-        for (int i = 0; i < Console.LargestWindowWidth; i++)
+        Console.SetCursorPosition(0, Console.WindowHeight -2);
+        for (int i = 0; i < Console.WindowWidth; i++)
         {
             Console.Write(" ");
         }
-        Console.SetCursorPosition(0, Console.WindowHeight - 2);
+        Console.SetCursorPosition(0, Console.WindowHeight -2);
         Console.BackgroundColor = ConsoleColor.Red;
-        Console.Write($"{Resources.strings.Height}: {prevY}, {Resources.strings.Width}: {prevX}, {Resources.strings.Up}: W, {Resources.strings.Left}: A, {Resources.strings.Down}: S, {Resources.strings.Right}: D, {Resources.strings.Save}: L, {Resources.strings.PlaceChamber}: H\n ╬: 1, ═: 2, ╦: 3, ╩: 4, ║: 5, ╣: 6, ╠: 7, ╗: 8, ╝: 9, ╚: U, ╔:I");
+        Console.Write($"{Resources.strings.Height}: {prevY}, {Resources.strings.Width}: {prevX}, {Resources.strings.Up}: W, {Resources.strings.Left}: A, {Resources.strings.Down}: S, {Resources.strings.Right}: D, {Resources.strings.Save}: L, {Resources.strings.PlaceChamber}: H, .: R\n ╬: 1, ═: 2, ╦: 3, ╩: 4, ║: 5, ╣: 6, ╠: 7, ╗: 8, ╝: 9, ╚: U, ╔:I");
         Console.SetCursorPosition(prevX, prevY);
         Console.BackgroundColor = ConsoleColor.Black;
     }
@@ -129,6 +129,10 @@ public class CursorMovement
                         map.PrintMap();
                         break;
                     }
+                case ConsoleKey.R:
+                    map.map[y, x] = '.';
+                    map.PrintMap();
+                    break;
                 case ConsoleKey.L:
                     Save.SaveFile(map);
                     break;
